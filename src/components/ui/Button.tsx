@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { type ReactNode } from 'react'
 
-type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost'
+type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'cyan' | 'glass'
 type ButtonSize = 'sm' | 'md' | 'lg'
 
 interface ButtonProps {
@@ -17,13 +17,17 @@ interface ButtonProps {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-brand-green text-white hover:bg-brand-green-dark shadow-lg shadow-brand-green/25 hover:shadow-xl hover:shadow-brand-green/30',
+    'bg-brand-blue text-white hover:bg-blue-500 shadow-lg shadow-brand-blue/25 hover:shadow-xl hover:shadow-brand-blue/30',
   secondary:
-    'bg-brand-blue text-white hover:bg-brand-blue-dark shadow-lg shadow-brand-blue/25 hover:shadow-xl hover:shadow-brand-blue/30',
+    'bg-white/10 text-white hover:bg-white/20 border border-white/10',
   outline:
-    'border-2 border-brand-green text-brand-green hover:bg-brand-green hover:text-white',
+    'border-2 border-brand-cyan text-brand-cyan hover:bg-brand-cyan hover:text-[#070F1E]',
   ghost:
-    'text-brand-green hover:bg-brand-light',
+    'text-brand-cyan hover:bg-white/5',
+  cyan:
+    'bg-brand-cyan text-[#070F1E] font-bold hover:brightness-110 shadow-lg shadow-brand-cyan/25 hover:shadow-xl hover:shadow-brand-cyan/30',
+  glass:
+    'glass text-white hover:text-brand-cyan hover:border-brand-cyan/30',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {

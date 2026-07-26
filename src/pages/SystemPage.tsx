@@ -61,7 +61,7 @@ export default function SystemPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Badge variant="green" size="md">
+            <Badge variant="cyan" size="md">
               <Sparkles className="w-3.5 h-3.5 inline mr-1" />
               OPC孵化体系
             </Badge>

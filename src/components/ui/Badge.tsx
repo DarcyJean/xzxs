@@ -2,15 +2,15 @@ import { type ReactNode } from 'react'
 
 interface BadgeProps {
   children: ReactNode
-  variant?: 'green' | 'blue' | 'gray' | 'light'
+  variant?: 'cyan' | 'blue' | 'gray' | 'light'
   size?: 'sm' | 'md'
 }
 
 const variantClasses = {
-  green: 'bg-brand-light text-brand-green',
-  blue: 'bg-brand-lightBlue text-brand-blue',
-  gray: 'bg-gray-100 text-gray-600',
-  light: 'bg-white/80 text-brand-green',
+  cyan: 'bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20',
+  blue: 'bg-brand-blue/10 text-brand-blue border border-brand-blue/20',
+  gray: 'bg-white/5 text-gray-400 border border-white/10',
+  light: 'bg-white/10 text-white backdrop-blur-sm',
 }
 
 const sizeClasses = {

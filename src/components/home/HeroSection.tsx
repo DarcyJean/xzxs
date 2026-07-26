@@ -1,126 +1,284 @@
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, User, Sparkles, Target, FileText, Map } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import Button from '../ui/Button'
 
-const flowSteps = [
-  { icon: User, label: '用户资源', color: 'bg-brand-light text-brand-green' },
-  { icon: Sparkles, label: 'AI匹配', color: 'bg-brand-lightBlue text-brand-blue' },
-  { icon: Target, label: '创业赛道', color: 'bg-brand-light text-brand-green' },
-  { icon: FileText, label: '成功案例', color: 'bg-brand-lightBlue text-brand-blue' },
-  { icon: Map, label: '创业路径', color: 'bg-brand-light text-brand-green' },
-]
-
 export default function HeroSection() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const THREE = (window as any).THREE
+    if (!THREE) return
+
+    // --- 场景初始化 ---
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 50)
+    camera.position.z = 5
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true })
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+    // --- 粒子系统 ---
+    const particleCount = 1500
+    const positions = new Float32Array(particleCount * 3)
+    const colors = new Float32Array(particleCount * 3)
+
+    for (let i = 0; i < particleCount; i++) {
+      // 散布在空间中的粒子
+      positions[i * 3] = (Math.random() - 0.5) * 12
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 8
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 6
+
+      // 青蓝渐变色
+      const t = Math.random()
+      colors[i * 3] = 0.0 + t * 0.0       // R
+      colors[i * 3 + 1] = 0.6 + t * 0.34   // G
+      colors[i * 3 + 2] = 0.8 + t * 0.2    // B
+    }
+
+    const particleGeom = new THREE.BufferGeometry()
+    particleGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+    particleGeom.setAttribute('color', new THREE.BufferAttribute(colors, 3))
+
+    const particleMat = new THREE.PointsMaterial({
+      size: 0.018,
+      vertexColors: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      transparent: true,
+      opacity: 0.8,
+    })
+
+    const particles = new THREE.Points(particleGeom, particleMat)
+    scene.add(particles)
+
+    // --- 悬浮 3D 几何体 ---
+    const shapes: THREE.Mesh[] = []
+    const shapeGeoms = [
+      new THREE.IcosahedronGeometry(0.25, 1),
+      new THREE.OctahedronGeometry(0.22),
+      new THREE.TorusGeometry(0.3, 0.06, 16, 32),
+      new THREE.TetrahedronGeometry(0.22),
+      new THREE.TorusKnotGeometry(0.2, 0.05, 64, 16),
+    ]
+
+    shapeGeoms.forEach((geom, i) => {
+      const mat = new THREE.MeshBasicMaterial({
+        color: i % 2 === 0 ? 0x00f0ff : 0x3b82f6,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.5,
+      })
+      const mesh = new THREE.Mesh(geom, mat)
+      mesh.position.set(
+        (Math.random() - 0.5) * 6,
+        (Math.random() - 0.5) * 4,
+        (Math.random() - 0.5) * 3 - 1
+      )
+      mesh.userData = {
+        rotSpeed: { x: (Math.random() - 0.5) * 0.01, y: (Math.random() - 0.5) * 0.01 },
+        floatOffset: Math.random() * Math.PI * 2,
+        floatSpeed: 0.003 + Math.random() * 0.005,
+        floatAmp: 0.3 + Math.random() * 0.6,
+        baseY: mesh.position.y,
+      }
+      scene.add(mesh)
+      shapes.push(mesh)
+    })
+
+    // --- 中心发光球体 ---
+    const glowGeom = new THREE.SphereGeometry(0.35, 32, 32)
+    const glowMat = new THREE.MeshBasicMaterial({
+      color: 0x00f0ff,
+      transparent: true,
+      opacity: 0.15,
+      wireframe: true,
+    })
+    const glowSphere = new THREE.Mesh(glowGeom, glowMat)
+    scene.add(glowSphere)
+
+    // --- 动画循环 ---
+    let animationId: number
+    const clock = new THREE.Clock()
+
+    function animate() {
+      animationId = requestAnimationFrame(animate)
+      const elapsed = clock.getElapsedTime()
+
+      // 粒子缓慢旋转
+      particles.rotation.y += 0.0003
+      particles.rotation.x += 0.0001
+
+      // 几何体旋转 + 浮动
+      shapes.forEach((shape) => {
+        shape.rotation.x += shape.userData.rotSpeed.x
+        shape.rotation.y += shape.userData.rotSpeed.y
+        shape.position.y = shape.userData.baseY + Math.sin(elapsed * shape.userData.floatSpeed * 10 + shape.userData.floatOffset) * shape.userData.floatAmp
+      })
+
+      // 中心球体脉冲
+      const pulse = 1 + Math.sin(elapsed * 1.5) * 0.2
+      glowSphere.scale.setScalar(pulse)
+      glowSphere.rotation.y += 0.005
+      glowSphere.rotation.x += 0.003
+
+      renderer.render(scene, camera)
+    }
+    animate()
+
+    // --- 响应窗口大小 ---
+    function onResize() {
+      camera.aspect = window.innerWidth / window.innerHeight
+      camera.updateProjectionMatrix()
+      renderer.setSize(window.innerWidth, window.innerHeight)
+    }
+    window.addEventListener('resize', onResize)
+
+    // --- 清理 ---
+    return () => {
+      cancelAnimationFrame(animationId)
+      window.removeEventListener('resize', onResize)
+      scene.remove(particles)
+      particleGeom.dispose()
+      particleMat.dispose()
+      shapes.forEach((s) => {
+        s.geometry.dispose()
+        ;(s.material as THREE.Material).dispose()
+      })
+      glowGeom.dispose()
+      glowMat.dispose()
+      renderer.dispose()
+    }
+  }, [])
+
+  // 滚动到项目定位
+  const scrollToIntro = () => {
+    document.getElementById('intro-section')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-white via-brand-light/30 to-brand-lightBlue/30">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-green/3 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-blue/3 rounded-full translate-y-1/3 -translate-x-1/4 blur-3xl" />
+    <section className="relative h-screen overflow-hidden">
+      {/* Three.js 画布 */}
+      <canvas ref={canvasRef} className="absolute inset-0 z-0" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24 lg:pt-32 pb-16 md:pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left: Text Content */}
+      {/* 覆盖层内容 */}
+      <div className="relative z-10 h-full flex flex-col items-center justify-center px-4">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          {/* 标签 */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-brand-cyan/20 text-brand-cyan text-sm font-medium mb-8"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            style={{ boxShadow: '0 0 15px rgba(0, 240, 255, 0.1)' }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-light text-brand-green text-sm font-medium mb-6">
-              <Sparkles className="w-4 h-4" />
-              乡村OPC创业孵化与经验共享平台
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight">
-              找到你的
-              <span className="text-brand-green">乡村创业赛道</span>
-            </h1>
-
-            <p className="mt-6 text-lg text-gray-500 leading-relaxed max-w-xl">
-              探索真实新农人案例，学习已经验证的创业路径，让乡村创业从一个人的探索变成可复制的方法。
-            </p>
-
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link to="/test">
-                <Button variant="primary" size="lg">
-                  开始创业匹配
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
-              </Link>
-              <Link to="/cases">
-                <Button variant="outline" size="lg">
-                  浏览案例库
-                </Button>
-              </Link>
-            </div>
-
-            <div className="mt-8 flex items-center gap-6 text-sm text-gray-400">
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-brand-green" />
-                5大赛道
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-brand-blue" />
-                15+真实案例
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-brand-green" />
-                免费匹配
-              </span>
-            </div>
+            <span className="w-2 h-2 rounded-full bg-brand-cyan animate-pulse" />
+            乡村OPC创业孵化与经验共享平台
           </motion.div>
 
-          {/* Right: Flow Diagram */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
-            className="hidden lg:block"
+          {/* 大标题 */}
+          <motion.h1
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            style={{
+              background: 'linear-gradient(135deg, #00F0FF 0%, #3B82F6 40%, #a78bfa 70%, #00F0FF 100%)',
+              backgroundSize: '200% 200%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              filter: 'drop-shadow(0 0 25px rgba(0, 240, 255, 0.4))',
+            }}
           >
-            <div className="bg-white/60 backdrop-blur rounded-3xl border border-gray-100 shadow-xl p-8">
-              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-6 text-center">
-                创业赛道匹配流程
-              </h3>
-              <div className="space-y-0">
-                {flowSteps.map((step, index) => (
-                  <motion.div
-                    key={step.label}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 + index * 0.15 }}
-                    className="flex items-center gap-4"
-                  >
-                    {/* Step node */}
-                    <div
-                      className={`
-                        flex items-center gap-3 px-5 py-3.5 rounded-2xl flex-1
-                        transition-all duration-300
-                        ${step.color}
-                      `}
-                    >
-                      <div className="w-10 h-10 rounded-xl bg-white/80 flex items-center justify-center shadow-sm">
-                        <step.icon className="w-5 h-5" />
-                      </div>
-                      <span className="font-semibold text-sm">{step.label}</span>
-                    </div>
+            多智新生
+          </motion.h1>
 
-                    {/* Arrow connector */}
-                    {index < flowSteps.length - 1 && (
-                      <div className="flex items-center justify-center w-8">
-                        <motion.div
-                          initial={{ height: 0 }}
-                          animate={{ height: 24 }}
-                          transition={{ delay: 0.6 + index * 0.15, duration: 0.3 }}
-                          className="w-0.5 bg-gradient-to-b from-brand-green to-brand-blue rounded-full"
-                        />
-                      </div>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+          {/* 副标题 */}
+          <motion.p
+            className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
+            探索真实新农人案例，学习已经验证的创业路径，让乡村创业从一个人的探索变成可复制的方法。
+          </motion.p>
+
+          {/* CTA 按钮 */}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+          >
+            <Link to="/test">
+              <Button variant="cyan" size="lg">
+                开始创业匹配
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+            </Link>
+            <Link to="/cases">
+              <Button variant="outline" size="lg">
+                浏览案例库
+              </Button>
+            </Link>
           </motion.div>
-        </div>
+
+          {/* 数据指标 */}
+          <motion.div
+            className="mt-8 flex items-center justify-center gap-6 text-sm text-gray-500"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
+          >
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-brand-cyan" />
+              5大赛道
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-brand-blue" />
+              15+真实案例
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-brand-cyan" />
+              免费匹配
+            </span>
+          </motion.div>
+        </motion.div>
+
+        {/* 底部跳动箭头 */}
+        <motion.button
+          onClick={scrollToIntro}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer bg-transparent border-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 0.8 }}
+          aria-label="向下滚动"
+        >
+          <span className="text-xs text-gray-500 tracking-widest">SCROLL</span>
+          <motion.div
+            className="w-10 h-10 rounded-full border border-brand-cyan/20 flex items-center justify-center"
+            animate={{ boxShadow: ['0 0 5px rgba(0,240,255,0.2)', '0 0 20px rgba(0,240,255,0.4)', '0 0 5px rgba(0,240,255,0.2)'] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <ChevronDown className="w-5 h-5 text-brand-cyan" />
+            </motion.div>
+          </motion.div>
+        </motion.button>
       </div>
     </section>
   )

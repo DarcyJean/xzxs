@@ -28,7 +28,7 @@ export default function SectionTitle({
           className={`inline-block text-sm font-semibold tracking-wider uppercase mb-3 px-3 py-1 rounded-full ${
             light
               ? 'bg-white/20 text-white'
-              : 'bg-brand-light text-brand-green'
+              : 'bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20'
           }`}
         >
           {label}
@@ -36,7 +36,7 @@ export default function SectionTitle({
       )}
       <h2
         className={`text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight ${
-          light ? 'text-white' : 'text-gray-900'
+          light ? 'text-white' : 'text-white'
         }`}
       >
         {title}
@@ -45,7 +45,7 @@ export default function SectionTitle({
         <p
           className={`mt-4 text-lg max-w-2xl ${
             centered ? 'mx-auto' : ''
-          } ${light ? 'text-white/80' : 'text-gray-500'}`}
+          } ${light ? 'text-white/80' : 'text-gray-400'}`}
         >
           {subtitle}
         </p>

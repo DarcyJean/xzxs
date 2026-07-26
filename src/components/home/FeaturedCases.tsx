@@ -10,7 +10,7 @@ export default function FeaturedCases() {
   const cases = getFeaturedCases()
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           label="真实案例"
@@ -31,20 +31,20 @@ export default function FeaturedCases() {
               >
                 <Link
                   to={`/cases/${c.id}`}
-                  className="group block p-6 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-brand-green/20 transition-all duration-300 h-full"
+                  className="group block p-6 glass-card h-full"
                 >
                   {/* Icon + Track Badge */}
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-brand-light flex items-center justify-center text-2xl">
+                    <div className="w-12 h-12 rounded-xl bg-brand-cyan/10 flex items-center justify-center text-2xl">
                       {c.thumbnail}
                     </div>
-                    {track && <Badge variant="green">{track.name}</Badge>}
+                    {track && <Badge variant="cyan">{track.name}</Badge>}
                   </div>
 
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-brand-green transition-colors">
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-brand-cyan transition-colors">
                     {c.name}
                   </h3>
-                  <p className="text-sm text-gray-500 leading-relaxed mb-4 line-clamp-2">
+                  <p className="text-sm text-gray-400 leading-relaxed mb-4 line-clamp-2">
                     {c.summary}
                   </p>
 
@@ -54,7 +54,7 @@ export default function FeaturedCases() {
                       <MapPin className="w-3.5 h-3.5" />
                       {c.location}
                     </div>
-                    <div className="flex items-center gap-1.5 text-xs text-brand-green font-medium">
+                    <div className="flex items-center gap-1.5 text-xs text-brand-cyan font-medium">
                       <TrendingUp className="w-3.5 h-3.5" />
                       {c.results.revenue}
                     </div>
@@ -64,9 +64,9 @@ export default function FeaturedCases() {
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                  <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
                     <span className="text-xs text-gray-400">{c.model}</span>
-                    <span className="flex items-center gap-1 text-sm font-medium text-brand-green opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="flex items-center gap-1 text-sm font-medium text-brand-cyan opacity-0 group-hover:opacity-100 transition-opacity">
                       查看完整路径
                       <ArrowRight className="w-4 h-4" />
                     </span>
@@ -80,7 +80,7 @@ export default function FeaturedCases() {
         <div className="mt-10 text-center">
           <Link
             to="/cases"
-            className="inline-flex items-center gap-2 text-brand-green font-semibold hover:text-brand-green-dark transition-colors"
+            className="inline-flex items-center gap-2 text-brand-cyan font-semibold hover:brightness-125 transition-colors"
           >
             浏览全部案例
             <ArrowRight className="w-5 h-5" />

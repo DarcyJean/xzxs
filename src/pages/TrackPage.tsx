@@ -41,7 +41,7 @@ export default function TrackPage() {
             transition={{ duration: 0.6 }}
           >
             <div className="text-6xl mb-6">{track.icon}</div>
-            <Badge variant="green" size="md">创业赛道</Badge>
+            <Badge variant="cyan" size="md">创业赛道</Badge>
             <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mt-4 mb-6">
               {track.name}
             </h1>

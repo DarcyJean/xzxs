@@ -66,7 +66,7 @@ export default function CaseDetailPage() {
                 {caseStudy.thumbnail}
               </div>
               <div>
-                {track && <Badge variant="green">{track.name}</Badge>}
+                {track && <Badge variant="cyan">{track.name}</Badge>}
               </div>
             </div>
 

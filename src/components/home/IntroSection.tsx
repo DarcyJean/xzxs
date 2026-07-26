@@ -21,7 +21,7 @@ const features = [
 
 export default function IntroSection() {
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="max-w-3xl mx-auto text-center"
@@ -30,15 +30,15 @@ export default function IntroSection() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block text-sm font-semibold tracking-wider uppercase text-brand-green mb-3 px-3 py-1 rounded-full bg-brand-light">
+          <span className="inline-block text-sm font-semibold tracking-wider uppercase mb-3 px-3 py-1 rounded-full bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20">
             关于我们
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
             让乡村创业有方法可循
           </h2>
-          <p className="mt-4 text-lg text-gray-500 leading-relaxed">
+          <p className="mt-4 text-lg text-gray-400 leading-relaxed">
             乡智新生是由
-            <span className="text-brand-green font-semibold">华南农业大学创新创业学院</span>
+            <span className="text-brand-cyan font-semibold">华南农业大学创新创业学院</span>
             孵化的乡村OPC创业孵化与经验共享平台。我们深入调研真实乡村创业案例，总结不同农业赛道的成功模式，帮助创业者降低试错成本，找到属于自己的乡村创业之路。
           </p>
         </motion.div>
@@ -47,17 +47,17 @@ export default function IntroSection() {
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
-              className="text-center p-8 rounded-2xl bg-gray-50/50 border border-gray-100 hover:bg-brand-light/30 hover:border-brand-green/20 transition-all duration-300"
+              className="glass-card text-center p-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15, duration: 0.5 }}
             >
-              <div className="w-14 h-14 rounded-2xl bg-brand-green/10 flex items-center justify-center mx-auto mb-5">
-                <feature.icon className="w-7 h-7 text-brand-green" />
+              <div className="w-14 h-14 rounded-2xl bg-brand-cyan/10 flex items-center justify-center mx-auto mb-5">
+                <feature.icon className="w-7 h-7 text-brand-cyan" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{feature.desc}</p>
+              <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">{feature.desc}</p>
             </motion.div>
           ))}
         </div>

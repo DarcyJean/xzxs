@@ -26,10 +26,9 @@ export default function Card({
   return (
     <motion.div
       className={`
-        bg-white rounded-2xl border border-gray-100
+        glass-card
         ${paddingClasses[padding]}
-        ${hover ? 'hover:shadow-lg hover:border-brand-light cursor-pointer' : 'shadow-sm'}
-        transition-all duration-300
+        ${hover ? 'cursor-pointer' : ''}
         ${className}
       `.trim()}
       onClick={onClick}
