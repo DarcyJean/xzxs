@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Sprout, Mail, MapPin } from 'lucide-react'
+import { Sprout, MapPin } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -87,10 +87,6 @@ export default function Footer() {
               <li className="flex items-center gap-2 text-sm text-gray-400">
                 <MapPin className="w-4 h-4 text-brand-cyan flex-shrink-0" />
                 华南农业大学创新创业学院
-              </li>
-              <li className="flex items-center gap-2 text-sm text-gray-400">
-                <Mail className="w-4 h-4 text-brand-cyan flex-shrink-0" />
-                xzxs@scau.edu.cn
               </li>
             </ul>
           </div>

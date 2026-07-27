@@ -163,6 +163,24 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-screen overflow-hidden">
+      {/* 田野背景图片 */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* 半透明青蓝渐变蒙版 */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(135deg, rgba(7,15,30,0.3) 0%, rgba(11,27,48,0.6) 100%)',
+          }}
+        />
+      </div>
+
       {/* Three.js 画布 */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0" />
 
@@ -201,7 +219,7 @@ export default function HeroSection() {
               filter: 'drop-shadow(0 0 25px rgba(0, 240, 255, 0.4))',
             }}
           >
-            多智新生
+            乡智新生
           </motion.h1>
 
           {/* 副标题 */}
