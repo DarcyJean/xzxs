@@ -163,11 +163,22 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-screen overflow-hidden">
-      {/* 田野背景图片 */}
+      {/* 田野背景 */}
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920)',
+          background: `
+            linear-gradient(180deg,
+              #4A90D9 0%,
+              #87CEEB 15%,
+              #B8D4E8 25%,
+              #E8D5A3 35%,
+              #DAA520 50%,
+              #C8A030 65%,
+              #8B7D3C 80%,
+              #5D6B2F 100%
+            )
+          `,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -176,7 +187,7 @@ export default function HeroSection() {
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(135deg, rgba(7,15,30,0.3) 0%, rgba(11,27,48,0.6) 100%)',
+            background: 'linear-gradient(135deg, rgba(7,15,30,0.35) 0%, rgba(11,27,48,0.65) 100%)',
           }}
         />
       </div>
