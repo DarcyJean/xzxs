@@ -45,7 +45,7 @@ export default function SectionTitle({
         <p
           className={`mt-4 text-lg max-w-2xl ${
             centered ? 'mx-auto' : ''
-          } ${light ? 'text-white/80' : 'text-gray-400'}`}
+          } ${light ? 'text-white/80' : 'text-white/70'}`}
         >
           {subtitle}
         </p>

@@ -34,13 +34,13 @@ export default function CaseCard({ caseStudy: c, index = 0 }: CaseCardProps) {
           <h3 className="text-lg font-bold text-white mb-2 group-hover:text-brand-cyan transition-colors">
             {c.name}
           </h3>
-          <p className="text-sm text-gray-400 leading-relaxed mb-4 line-clamp-2">
+          <p className="text-sm text-gray-200 leading-relaxed mb-4 line-clamp-2">
             {c.summary}
           </p>
 
           {/* Stats */}
           <div className="flex flex-wrap gap-3 mb-4">
-            <div className="flex items-center gap-1.5 text-xs text-gray-400">
+            <div className="flex items-center gap-1.5 text-xs text-gray-200">
               <MapPin className="w-3.5 h-3.5" />
               {c.location}
             </div>
@@ -56,7 +56,7 @@ export default function CaseCard({ caseStudy: c, index = 0 }: CaseCardProps) {
 
           {/* Model */}
           <div className="pt-4 border-t border-white/5 flex items-center justify-between">
-            <span className="text-xs text-gray-400 truncate mr-2">{c.model}</span>
+            <span className="text-xs text-gray-200 truncate mr-2">{c.model}</span>
             <span className="flex items-center gap-1 text-sm font-medium text-brand-cyan opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
               查看完整路径
               <ArrowRight className="w-4 h-4" />

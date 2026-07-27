@@ -224,7 +224,7 @@ export default function HeroSection() {
 
           {/* 副标题 */}
           <motion.p
-            className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed"
+            className="text-white/70 text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
@@ -254,7 +254,7 @@ export default function HeroSection() {
 
           {/* 数据指标 */}
           <motion.div
-            className="mt-8 flex items-center justify-center gap-6 text-sm text-gray-500"
+            className="mt-8 flex items-center justify-center gap-6 text-sm text-white/60"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1, duration: 0.6 }}
@@ -283,7 +283,7 @@ export default function HeroSection() {
           transition={{ delay: 1.5, duration: 0.8 }}
           aria-label="向下滚动"
         >
-          <span className="text-xs text-gray-500 tracking-widest">SCROLL</span>
+          <span className="text-xs text-white/60 tracking-widest">SCROLL</span>
           <motion.div
             className="w-10 h-10 rounded-full border border-brand-cyan/20 flex items-center justify-center"
             animate={{ boxShadow: ['0 0 5px rgba(0,240,255,0.2)', '0 0 20px rgba(0,240,255,0.4)', '0 0 5px rgba(0,240,255,0.2)'] }}

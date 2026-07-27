@@ -20,8 +20,8 @@ export default function TrackPage() {
       <PageTransition>
         <div className="min-h-[60vh] flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">赛道未找到</h1>
-            <Link to="/test" className="text-brand-green hover:underline">
+            <h1 className="text-2xl font-bold text-white mb-2">赛道未找到</h1>
+            <Link to="/test" className="text-brand-cyan hover:underline">
               去做匹配测试，找到你的赛道
             </Link>
           </div>
@@ -33,7 +33,7 @@ export default function TrackPage() {
   return (
     <PageTransition>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-brand-light/50 to-white py-16 md:py-24">
+      <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -42,10 +42,10 @@ export default function TrackPage() {
           >
             <div className="text-6xl mb-6">{track.icon}</div>
             <Badge variant="cyan" size="md">创业赛道</Badge>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mt-4 mb-6">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-white mt-4 mb-6">
               {track.name}
             </h1>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed">
               {track.subtitle}
             </p>
           </motion.div>
@@ -53,7 +53,7 @@ export default function TrackPage() {
       </section>
 
       {/* Track Description */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="prose prose-lg max-w-none"
@@ -62,7 +62,7 @@ export default function TrackPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-gray-600 leading-relaxed text-lg">
+            <p className="text-gray-200 leading-relaxed text-lg">
               {track.description}
             </p>
           </motion.div>
@@ -70,7 +70,7 @@ export default function TrackPage() {
       </section>
 
       {/* Suitable For */}
-      <section className="py-12 md:py-16 bg-gray-50/50">
+      <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             title="适合人群"
@@ -80,14 +80,14 @@ export default function TrackPage() {
             {track.suitableFor.map((item, i) => (
               <motion.div
                 key={i}
-                className="flex items-start gap-3 p-4 bg-white rounded-xl border border-gray-100"
+                className="flex items-start gap-3 p-4 bg-white/5 rounded-xl border border-white/10"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
               >
-                <Users className="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-gray-700">{item}</span>
+                <Users className="w-5 h-5 text-brand-cyan flex-shrink-0 mt-0.5" />
+                <span className="text-sm text-gray-100">{item}</span>
               </motion.div>
             ))}
           </div>
@@ -95,7 +95,7 @@ export default function TrackPage() {
       </section>
 
       {/* Business Modes */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             label="典型创业模式"
@@ -114,14 +114,14 @@ export default function TrackPage() {
               >
                 <Card padding="lg">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
-                      <Lightbulb className="w-6 h-6 text-brand-green" />
+                    <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center flex-shrink-0">
+                      <Lightbulb className="w-6 h-6 text-brand-cyan" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      <h3 className="text-lg font-bold text-white mb-2">
                         {mode.title}
                       </h3>
-                      <p className="text-sm text-gray-500 leading-relaxed">
+                      <p className="text-sm text-gray-200 leading-relaxed">
                         {mode.desc}
                       </p>
                     </div>
@@ -135,7 +135,7 @@ export default function TrackPage() {
 
       {/* Cases in this Track */}
       {cases.length > 0 && (
-        <section className="py-12 md:py-16 bg-brand-light/30">
+        <section className="py-12 md:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionTitle
               label="真实案例"
@@ -153,17 +153,17 @@ export default function TrackPage() {
       )}
 
       {/* CTA */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-16">
         <div className="max-w-xl mx-auto text-center px-4">
-          <TrendingUp className="w-12 h-12 text-brand-green mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-gray-900 mb-3">
+          <TrendingUp className="w-12 h-12 text-brand-cyan mx-auto mb-4" />
+          <h3 className="text-xl font-bold text-white mb-3">
             这个赛道适合你吗？
           </h3>
-          <p className="text-gray-500 mb-6">
+          <p className="text-gray-200 mb-6">
             完成创业匹配测试，了解你与这个赛道的匹配度
           </p>
           <Link to="/test">
-            <Button variant="primary" size="md">
+            <Button variant="cyan" size="md">
               开始创业匹配
               <ArrowRight className="w-4 h-4" />
             </Button>

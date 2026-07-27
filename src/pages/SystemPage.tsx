@@ -19,25 +19,25 @@ const pillars = [
     icon: Database,
     title: '乡村机会库',
     desc: '汇聚全国乡村创业机会，涵盖五大农业赛道的产业资源、政策红利和市场空白，精准匹配创业者需求。',
-    color: 'bg-brand-light text-brand-green',
+    color: 'bg-brand-cyan/10 text-brand-cyan',
   },
   {
     icon: GraduationCap,
     title: '轻创业训练营',
     desc: '设计轻资产、低门槛的乡村创业课程体系，从模式分析到实操指导，帮助创业者快速验证商业模型。',
-    color: 'bg-brand-lightBlue text-brand-blue',
+    color: 'bg-brand-blue/10 text-brand-blue',
   },
   {
     icon: Users,
     title: '导师体系',
     desc: '链接成功创业者、农业专家、高校教授，建立"1对1+社群陪跑"导师体系，解决创业过程中的关键问题。',
-    color: 'bg-brand-light text-brand-green',
+    color: 'bg-brand-cyan/10 text-brand-cyan',
   },
   {
     icon: Rocket,
     title: '全域资源孵化',
     desc: '整合政策、资金、技术、渠道等全域资源，为创业者提供从0到1的全流程孵化支持。',
-    color: 'bg-brand-lightBlue text-brand-blue',
+    color: 'bg-brand-blue/10 text-brand-blue',
   },
 ]
 
@@ -54,7 +54,7 @@ export default function SystemPage() {
   return (
     <PageTransition>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-brand-light/50 to-white py-16 md:py-24">
+      <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -65,10 +65,10 @@ export default function SystemPage() {
               <Sparkles className="w-3.5 h-3.5 inline mr-1" />
               OPC孵化体系
             </Badge>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mt-4 mb-6">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-white mt-4 mb-6">
               1+4+N 创业孵化体系
             </h1>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed">
               以乡智新生平台为核心，构建四大支撑体系，孵化N个乡村超级个体
             </p>
           </motion.div>
@@ -76,10 +76,10 @@ export default function SystemPage() {
       </section>
 
       {/* 1 Platform */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center p-10 md:p-14 rounded-3xl bg-gradient-to-br from-brand-green to-brand-green-dark text-white shadow-xl"
+            className="text-center p-10 md:p-14 rounded-3xl bg-gradient-to-br from-brand-cyan to-brand-blue text-white"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -102,7 +102,7 @@ export default function SystemPage() {
       </section>
 
       {/* 4 Pillars */}
-      <section className="py-12 md:py-16 bg-gray-50/50">
+      <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             label="4大支撑"
@@ -114,7 +114,7 @@ export default function SystemPage() {
             {pillars.map((pillar, i) => (
               <motion.div
                 key={pillar.title}
-                className="p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+                className="p-8 rounded-2xl bg-white/5 border border-white/10 transition-all"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -125,10 +125,10 @@ export default function SystemPage() {
                 >
                   <pillar.icon className={`w-6 h-6 ${pillar.color.split(' ')[1]}`} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-xl font-bold text-white mb-3">
                   {pillar.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-sm text-gray-200 leading-relaxed">
                   {pillar.desc}
                 </p>
               </motion.div>
@@ -138,7 +138,7 @@ export default function SystemPage() {
       </section>
 
       {/* N Individuals */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             label="N个超级个体"
@@ -150,17 +150,17 @@ export default function SystemPage() {
             {individuals.map((ind, i) => (
               <motion.div
                 key={i}
-                className="text-center p-5 rounded-2xl bg-gray-50/50 border border-gray-100 hover:bg-brand-light/30 hover:border-brand-green/20 transition-all"
+                className="text-center p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-brand-cyan/10 hover:border-brand-cyan/20 transition-all"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
               >
                 <div className="text-3xl mb-2">{ind.emoji}</div>
-                <div className="text-sm font-semibold text-gray-900 mb-1">
+                <div className="text-sm font-semibold text-white mb-1">
                   {ind.name}
                 </div>
-                <div className="text-xs text-gray-400">{ind.desc}</div>
+                <div className="text-xs text-gray-200">{ind.desc}</div>
               </motion.div>
             ))}
           </div>
@@ -177,7 +177,7 @@ export default function SystemPage() {
       </section>
 
       {/* How to Join */}
-      <section className="py-12 md:py-16 bg-brand-light/30">
+      <section className="py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center"
@@ -210,24 +210,24 @@ export default function SystemPage() {
               ].map((item, i) => (
                 <motion.div
                   key={i}
-                  className="p-6 rounded-2xl bg-white border border-gray-100"
+                  className="p-6 rounded-2xl bg-white/5 border border-white/10"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                 >
-                  <div className="text-3xl font-extrabold text-brand-green/20 mb-3">
+                  <div className="text-3xl font-extrabold text-brand-cyan/20 mb-3">
                     {item.step}
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-500">{item.desc}</p>
+                  <h3 className="font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-200">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
 
             <div className="mt-8">
               <Link to="/test">
-                <Button variant="primary" size="lg">
+                <Button variant="cyan" size="lg">
                   开始第一步
                   <ArrowRight className="w-4 h-4" />
                 </Button>

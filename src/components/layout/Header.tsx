@@ -73,7 +73,7 @@ export default function Header() {
               <span className="text-lg font-bold text-white leading-tight">
                 乡智新生
               </span>
-              <span className="text-[10px] text-gray-400 font-medium leading-tight tracking-wider">
+              <span className="text-[10px] text-white/60 font-medium leading-tight tracking-wider">
                 XZXS
               </span>
             </div>
@@ -89,7 +89,7 @@ export default function Header() {
                     className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                       activeSection === link.id
                         ? 'text-brand-cyan'
-                        : 'text-gray-400 hover:text-brand-cyan hover:bg-white/5'
+                        : 'text-white/60 hover:text-brand-cyan hover:bg-white/5'
                     }`}
                   >
                     {link.label}
@@ -108,7 +108,7 @@ export default function Header() {
                     className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                       location.pathname === link.to
                         ? 'text-brand-cyan'
-                        : 'text-gray-400 hover:text-brand-cyan hover:bg-white/5'
+                        : 'text-white/60 hover:text-brand-cyan hover:bg-white/5'
                     }`}
                   >
                     {link.label}
@@ -138,9 +138,9 @@ export default function Header() {
             aria-label="Toggle menu"
           >
             {mobileOpen ? (
-              <X className="w-6 h-6 text-gray-300" />
+              <X className="w-6 h-6 text-white/80" />
             ) : (
-              <Menu className="w-6 h-6 text-gray-300" />
+              <Menu className="w-6 h-6 text-white/80" />
             )}
           </button>
         </div>
@@ -165,7 +165,7 @@ export default function Header() {
                       className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors text-left ${
                         activeSection === link.id
                           ? 'bg-brand-cyan/10 text-brand-cyan'
-                          : 'text-gray-400 hover:bg-white/5'
+                          : 'text-white/60 hover:bg-white/5'
                       }`}
                     >
                       {link.label}
@@ -179,7 +179,7 @@ export default function Header() {
                       className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                         location.pathname === link.to
                           ? 'bg-brand-cyan/10 text-brand-cyan'
-                          : 'text-gray-400 hover:bg-white/5'
+                          : 'text-white/60 hover:bg-white/5'
                       }`}
                     >
                       {link.label}

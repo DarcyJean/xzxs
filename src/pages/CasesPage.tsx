@@ -44,7 +44,7 @@ export default function CasesPage() {
   return (
     <PageTransition>
       {/* Header */}
-      <section className="bg-gradient-to-br from-brand-light/50 to-white py-16">
+      <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -61,7 +61,7 @@ export default function CasesPage() {
       </section>
 
       {/* Filters + Search */}
-      <section className="py-8 bg-white border-b border-gray-100 sticky top-16 md:top-20 z-20">
+      <section className="py-8 border-b border-white/5 sticky top-16 md:top-20 z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
             {/* Track filters */}
@@ -72,8 +72,8 @@ export default function CasesPage() {
                   px-3 py-1.5 rounded-full text-sm font-medium transition-all
                   ${
                     !activeTrack
-                      ? 'bg-brand-green text-white'
-                      : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                      ? 'bg-brand-cyan text-white'
+                      : 'bg-white/5 text-gray-200 hover:bg-white/10'
                   }
                 `}
               >
@@ -87,8 +87,8 @@ export default function CasesPage() {
                     px-3 py-1.5 rounded-full text-sm font-medium transition-all flex items-center gap-1.5
                     ${
                       activeTrack === track.slug
-                        ? 'bg-brand-green text-white'
-                        : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                        ? 'bg-brand-cyan text-white'
+                        : 'bg-white/5 text-gray-200 hover:bg-white/10'
                     }
                   `}
                 >
@@ -100,13 +100,13 @@ export default function CasesPage() {
 
             {/* Search */}
             <div className="relative w-full md:w-64">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60" />
               <input
                 type="text"
                 placeholder="搜索案例..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-all"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-white placeholder:text-white/60 text-sm focus:outline-none focus:ring-2 focus:ring-brand-cyan/20 focus:border-brand-cyan transition-all"
               />
             </div>
           </div>
@@ -114,11 +114,11 @@ export default function CasesPage() {
       </section>
 
       {/* Cases Grid */}
-      <section className="py-12 bg-gray-50/30 min-h-[50vh]">
+      <section className="py-12 min-h-[50vh]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {filteredCases.length > 0 ? (
             <>
-              <p className="text-sm text-gray-400 mb-6">
+              <p className="text-sm text-gray-200 mb-6">
                 共找到 {filteredCases.length} 个案例
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -129,8 +129,8 @@ export default function CasesPage() {
             </>
           ) : (
             <div className="text-center py-20">
-              <p className="text-gray-400 text-lg mb-2">没有找到匹配的案例</p>
-              <p className="text-sm text-gray-400">
+              <p className="text-gray-200 text-lg mb-2">没有找到匹配的案例</p>
+              <p className="text-sm text-gray-200">
                 试试调整筛选条件或搜索关键词
               </p>
             </div>

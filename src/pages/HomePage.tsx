@@ -82,7 +82,7 @@ export default function HomePage() {
                 <CheckCircle2 className="w-10 h-10 text-brand-cyan" />
               </motion.div>
               <h2 className="text-2xl font-bold text-white mb-3">提交成功！</h2>
-              <p className="text-gray-400 mb-8">
+              <p className="text-white/80 mb-8">
                 感谢你的案例分享。我们会在5个工作日内审核并与你联系。
               </p>
               <Button
@@ -113,7 +113,7 @@ export default function HomePage() {
               >
                 {/* 项目名称 */}
                 <div>
-                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-300 mb-2">
+                  <label className="flex items-center gap-2 text-sm font-semibold text-white mb-2">
                     <User className="w-4 h-4 text-brand-cyan" />
                     项目名称 *
                   </label>
@@ -124,13 +124,13 @@ export default function HomePage() {
                     onChange={handleChange}
                     required
                     placeholder="例如：阳光玫瑰葡萄品牌化项目"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-cyan/20 focus:border-brand-cyan/50 transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-white focus:outline-none focus:ring-2 focus:ring-brand-cyan/20 focus:border-brand-cyan/50 transition-all"
                   />
                 </div>
 
                 {/* 所属赛道 */}
                 <div>
-                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-300 mb-2">
+                  <label className="flex items-center gap-2 text-sm font-semibold text-white mb-2">
                     <Sparkles className="w-4 h-4 text-brand-cyan" />
                     所属赛道 *
                   </label>
@@ -152,7 +152,7 @@ export default function HomePage() {
 
                 {/* 项目所在地 */}
                 <div>
-                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-300 mb-2">
+                  <label className="flex items-center gap-2 text-sm font-semibold text-white mb-2">
                     <MapPin className="w-4 h-4 text-brand-cyan" />
                     项目所在地 *
                   </label>
@@ -163,13 +163,13 @@ export default function HomePage() {
                     onChange={handleChange}
                     required
                     placeholder="例如：广东·清远"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-cyan/20 focus:border-brand-cyan/50 transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-white focus:outline-none focus:ring-2 focus:ring-brand-cyan/20 focus:border-brand-cyan/50 transition-all"
                   />
                 </div>
 
                 {/* 联系方式 */}
                 <div>
-                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-300 mb-2">
+                  <label className="flex items-center gap-2 text-sm font-semibold text-white mb-2">
                     <Send className="w-4 h-4 text-brand-cyan" />
                     联系方式（不对外展示）*
                   </label>
@@ -180,13 +180,13 @@ export default function HomePage() {
                     onChange={handleChange}
                     required
                     placeholder="手机号或微信号"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-cyan/20 focus:border-brand-cyan/50 transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-white focus:outline-none focus:ring-2 focus:ring-brand-cyan/20 focus:border-brand-cyan/50 transition-all"
                   />
                 </div>
 
                 {/* 项目简介 */}
                 <div>
-                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-300 mb-2">
+                  <label className="flex items-center gap-2 text-sm font-semibold text-white mb-2">
                     <FileText className="w-4 h-4 text-brand-cyan" />
                     项目简介 *
                   </label>
@@ -197,13 +197,13 @@ export default function HomePage() {
                     required
                     rows={3}
                     placeholder="简要描述你的创业项目，包括：做什么、怎么做、取得了什么成果"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-cyan/20 focus:border-brand-cyan/50 transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-white focus:outline-none focus:ring-2 focus:ring-brand-cyan/20 focus:border-brand-cyan/50 transition-all resize-none"
                   />
                 </div>
 
                 {/* 创业成果 */}
                 <div>
-                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-300 mb-2">
+                  <label className="flex items-center gap-2 text-sm font-semibold text-white mb-2">
                     <FileText className="w-4 h-4 text-brand-cyan" />
                     创业成果
                   </label>
@@ -213,13 +213,13 @@ export default function HomePage() {
                     onChange={handleChange}
                     rows={3}
                     placeholder="例如：年销售额XXX万元、规模XXX亩、带动XX人就业、获得XX奖项"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-cyan/20 focus:border-brand-cyan/50 transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-white focus:outline-none focus:ring-2 focus:ring-brand-cyan/20 focus:border-brand-cyan/50 transition-all resize-none"
                   />
                 </div>
 
                 {/* 成长路径 */}
                 <div>
-                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-300 mb-2">
+                  <label className="flex items-center gap-2 text-sm font-semibold text-white mb-2">
                     <FileText className="w-4 h-4 text-brand-cyan" />
                     成长路径
                   </label>
@@ -232,7 +232,7 @@ export default function HomePage() {
 2020年 - 创业起步：你做了什么
 2021年 - 技术突破：有了什么进展
 2022年 - 规模扩大：取得了什么成果`}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-cyan/20 focus:border-brand-cyan/50 transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-white focus:outline-none focus:ring-2 focus:ring-brand-cyan/20 focus:border-brand-cyan/50 transition-all resize-none"
                   />
                 </div>
 
@@ -242,7 +242,7 @@ export default function HomePage() {
                     提交案例
                     <Send className="w-4 h-4" />
                   </Button>
-                  <p className="text-xs text-gray-500 text-center mt-3">
+                  <p className="text-xs text-white text-center mt-3">
                     提交后我们会在5个工作日内审核，审核通过后将展示在案例库中
                   </p>
                 </div>

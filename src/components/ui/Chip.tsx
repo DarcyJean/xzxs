@@ -22,8 +22,8 @@ export default function Chip({
         transition-all duration-200 border-2 cursor-pointer
         ${
           selected
-            ? 'bg-brand-green text-white border-brand-green shadow-md shadow-brand-green/20'
-            : 'bg-white text-gray-600 border-gray-200 hover:border-brand-green hover:text-brand-green'
+            ? 'bg-brand-cyan text-white border-brand-cyan shadow-md shadow-brand-cyan/20'
+            : 'bg-white/5 text-gray-200 border-white/10 hover:border-brand-cyan hover:text-brand-cyan'
         }
       `.trim()}
       whileTap={{ scale: 0.95 }}

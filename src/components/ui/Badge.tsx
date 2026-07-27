@@ -9,7 +9,7 @@ interface BadgeProps {
 const variantClasses = {
   cyan: 'bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20',
   blue: 'bg-brand-blue/10 text-brand-blue border border-brand-blue/20',
-  gray: 'bg-white/5 text-gray-400 border border-white/10',
+  gray: 'bg-white/5 text-white/70 border border-white/10',
   light: 'bg-white/10 text-white backdrop-blur-sm',
 }
 

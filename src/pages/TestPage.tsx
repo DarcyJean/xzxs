@@ -69,21 +69,21 @@ export default function TestPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen">
         {/* Progress Bar */}
-        <div className="sticky top-16 md:top-20 z-30 bg-white/80 backdrop-blur border-b border-gray-100">
+        <div className="sticky top-16 md:top-20 z-30 bg-brand-dark/80 backdrop-blur border-b border-white/10">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 py-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-400">
+              <span className="text-sm font-medium text-gray-200">
                 步骤 {currentStep + 1} / {totalSteps}
               </span>
-              <span className="text-sm text-brand-green font-medium">
+              <span className="text-sm text-brand-cyan font-medium">
                 {stepInfo?.label}
               </span>
             </div>
-            <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-gradient-to-r from-brand-green to-brand-green-light rounded-full"
+                className="h-full bg-gradient-to-r from-brand-cyan to-brand-blue rounded-full"
                 initial={{ width: 0 }}
                 animate={{
                   width: `${((currentStep + 1) / totalSteps) * 100}%`,
@@ -107,14 +107,14 @@ export default function TestPage() {
               >
                 <div className="text-center mb-10">
                   <motion.h2
-                    className="text-2xl md:text-3xl font-bold text-gray-900 mb-3"
+                    className="text-2xl md:text-3xl font-bold text-white mb-3"
                     key={stepInfo?.title}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
                     {stepInfo?.title}
                   </motion.h2>
-                  <p className="text-gray-500">{stepInfo?.subtitle}</p>
+                  <p className="text-gray-200">{stepInfo?.subtitle}</p>
                 </div>
 
                 {/* Step 0: Resources */}
@@ -135,7 +135,7 @@ export default function TestPage() {
                           {option.label}
                         </Chip>
                         {answers.resources.includes(option.id) && (
-                          <p className="text-xs text-gray-400 mt-1 ml-2">
+                          <p className="text-xs text-gray-200 mt-1 ml-2">
                             {option.description}
                           </p>
                         )}
@@ -162,7 +162,7 @@ export default function TestPage() {
                           {option.label}
                         </Chip>
                         {answers.directions.includes(option.id) && (
-                          <p className="text-xs text-gray-400 mt-1 ml-2">
+                          <p className="text-xs text-gray-200 mt-1 ml-2">
                             {option.description}
                           </p>
                         )}
@@ -185,8 +185,8 @@ export default function TestPage() {
                           text-left p-6 rounded-2xl border-2 transition-all duration-200 cursor-pointer
                           ${
                             answers.stage === option.id
-                              ? 'border-brand-green bg-brand-light shadow-md shadow-brand-green/10'
-                              : 'border-gray-100 bg-white hover:border-brand-green/30 hover:bg-brand-light/10'
+                              ? 'border-brand-cyan bg-white/5 shadow-md shadow-brand-cyan/10'
+                              : 'border-white/10 bg-white/5 hover:border-brand-cyan/30 hover:bg-brand-cyan/10'
                           }
                         `}
                         initial={{ opacity: 0, y: 10 }}
@@ -194,17 +194,17 @@ export default function TestPage() {
                         transition={{ delay: i * 0.1 }}
                       >
                         <div className="text-3xl mb-3">{option.icon}</div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-1">
+                        <h3 className="text-lg font-bold text-white mb-1">
                           {option.label}
                         </h3>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-200">
                           {option.description}
                         </p>
                         {answers.stage === option.id && (
                           <motion.div
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
-                            className="mt-3 inline-flex items-center gap-1.5 text-sm text-brand-green font-medium"
+                            className="mt-3 inline-flex items-center gap-1.5 text-sm text-brand-cyan font-medium"
                           >
                             <CheckCircle2 className="w-4 h-4" />
                             已选择
@@ -228,14 +228,14 @@ export default function TestPage() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                    className="w-20 h-20 rounded-full bg-brand-light flex items-center justify-center mx-auto mb-4"
+                    className="w-20 h-20 rounded-full bg-brand-cyan/10 flex items-center justify-center mx-auto mb-4"
                   >
-                    <Target className="w-10 h-10 text-brand-green" />
+                    <Target className="w-10 h-10 text-brand-cyan" />
                   </motion.div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
                     你的创业赛道匹配结果
                   </h2>
-                  <p className="text-gray-500">
+                  <p className="text-gray-200">
                     根据你的资源、能力和目标，以下是推荐赛道（按匹配度排序）
                   </p>
                 </div>
@@ -251,8 +251,8 @@ export default function TestPage() {
                         p-6 rounded-2xl border-2 transition-all
                         ${
                           index === 0
-                            ? 'border-brand-green bg-brand-light/30 shadow-lg shadow-brand-green/10'
-                            : 'border-gray-100 bg-white'
+                            ? 'border-brand-cyan bg-brand-light/30 shadow-lg shadow-brand-cyan/10'
+                            : 'border-white/10 bg-white/5'
                         }
                       `}
                     >
@@ -260,19 +260,19 @@ export default function TestPage() {
                         <div className="flex items-center gap-3">
                           <span className="text-3xl">{result.track.icon}</span>
                           <div>
-                            <h3 className="text-lg font-bold text-gray-900">
+                            <h3 className="text-lg font-bold text-white">
                               {result.track.name}
                             </h3>
-                            <p className="text-sm text-gray-500">
+                            <p className="text-sm text-gray-200">
                               {result.track.subtitle}
                             </p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-2xl font-extrabold text-brand-green">
+                          <div className="text-2xl font-extrabold text-brand-cyan">
                             {result.score}%
                           </div>
-                          <div className="text-xs text-gray-400">匹配度</div>
+                          <div className="text-xs text-gray-200">匹配度</div>
                         </div>
                       </div>
 
@@ -281,7 +281,7 @@ export default function TestPage() {
                         {result.reasons.map((reason, i) => (
                           <span
                             key={i}
-                            className="text-xs px-2.5 py-1 rounded-full bg-white border border-gray-100 text-gray-600"
+                            className="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-gray-200"
                           >
                             {reason}
                           </span>
@@ -290,7 +290,7 @@ export default function TestPage() {
 
                       <div className="flex gap-3">
                         <Button
-                          variant={index === 0 ? 'primary' : 'outline'}
+                          variant={index === 0 ? 'cyan' : 'outline'}
                           size="sm"
                           onClick={() => navigate(`/tracks/${result.track.slug}`)}
                         >
@@ -310,7 +310,7 @@ export default function TestPage() {
                 <div className="mt-8 text-center">
                   <button
                     onClick={handleReset}
-                    className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gray-600 transition-colors"
+                    className="inline-flex items-center gap-2 text-sm text-gray-200 hover:text-gray-200 transition-colors"
                   >
                     <RefreshCw className="w-4 h-4" />
                     重新测试
@@ -336,7 +336,7 @@ export default function TestPage() {
                   ${
                     currentStep === 0
                       ? 'text-gray-300 cursor-not-allowed'
-                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                      : 'text-gray-200 hover:text-white hover:bg-white/10'
                   }
                 `}
               >
@@ -345,7 +345,7 @@ export default function TestPage() {
               </button>
 
               <Button
-                variant="primary"
+                variant="cyan"
                 onClick={handleNext}
                 disabled={!isStepValid()}
               >

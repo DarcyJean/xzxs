@@ -36,7 +36,7 @@ export default function IntroSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-white">
             让乡村创业有方法可循
           </h2>
-          <p className="mt-4 text-lg text-gray-400 leading-relaxed">
+          <p className="mt-4 text-lg text-white/70 leading-relaxed">
             乡智新生是由
             <span className="text-brand-cyan font-semibold">华南农业大学创新创业学院</span>
             孵化的乡村OPC创业孵化与经验共享平台。我们深入调研真实乡村创业案例，总结不同农业赛道的成功模式，帮助创业者降低试错成本，找到属于自己的乡村创业之路。
@@ -57,7 +57,7 @@ export default function IntroSection() {
                 <feature.icon className="w-7 h-7 text-brand-cyan" />
               </div>
               <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">{feature.desc}</p>
+              <p className="text-sm text-white/70 leading-relaxed">{feature.desc}</p>
             </motion.div>
           ))}
         </div>

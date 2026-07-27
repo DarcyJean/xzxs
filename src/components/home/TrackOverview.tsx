@@ -31,7 +31,7 @@ export default function TrackOverview() {
                 <h3 className="text-lg font-bold text-white mb-2 group-hover:text-brand-cyan transition-colors">
                   {track.name}
                 </h3>
-                <p className="text-sm text-gray-400 leading-relaxed mb-4 line-clamp-3">
+                <p className="text-sm text-white/70 leading-relaxed mb-4 line-clamp-3">
                   {track.subtitle}
                 </p>
                 <div className="flex items-center gap-1 text-sm font-medium text-brand-cyan opacity-0 group-hover:opacity-100 transition-opacity">
