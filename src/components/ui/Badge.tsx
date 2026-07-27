@@ -20,7 +20,7 @@ const sizeClasses = {
 
 export default function Badge({
   children,
-  variant = 'green',
+  variant = 'cyan',
   size = 'sm',
 }: BadgeProps) {
   return (
